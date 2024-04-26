@@ -14,6 +14,14 @@ export async function addNewContact(payload) {
   });
 }
 
-// TODO:
-// 1. Buat sebuah fungsi untuk menghapus data kontak dengan mengirimkan id sebagai params dari kontak yang akan dihapus ke API menggunakan endpoint /contacts, axios method yang digunakan adalah delete
-// 2. Buat sebuah fungsi untuk mengubah data kontak dengan mengirimkan id sebagai params dari kontak yang akan diubah beserta dengan data perubahan terbaru dari kontak tersebut ke API menggunakan endpoint /contacts, axios method yang digunakan adalah put
+export async function updateContact(payload) {
+  return await axios.put(`${BASE_URL}/contacts/${payload.id}`, payload.data).catch((error) =>{
+    return error;
+  })
+}
+
+export async function deleteContact(id) {
+  return await axios.delete(`${BASE_URL}/contacts/${id}`).catch((error) =>{
+    return error;
+  })
+}
